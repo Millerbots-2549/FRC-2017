@@ -5,37 +5,36 @@ import org.usfirst.frc.team2549.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class DriveCommand extends Command {
 
-    public DriveCommand() {
-        requires(Robot.drivetrainSubsystem);
-    }
+	public DriveCommand() {
+		requires(Robot.drivetrainSubsystem);
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	protected void initialize() {
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.drivetrainSubsystem.driveMecanum(Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisX),
-    										   Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY),
-    										   Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
-    }
+	protected void execute() {
+		Robot.drivetrainSubsystem.driveMecanum(Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisX),
+				Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY), Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+		SmartDashboard.putNumber("Joystick X Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisX));
+		SmartDashboard.putNumber("Joystick Y Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY));
+		SmartDashboard.putNumber("Joystick Rotation Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+		SmartDashboard.putData("Left Front Motor", Robot.drivetrainSubsystem.motorLF);
+		SmartDashboard.putData("Left Back Motor", Robot.drivetrainSubsystem.motorLB);
+		SmartDashboard.putData("Front Front Motor", Robot.drivetrainSubsystem.motorRF);
+		SmartDashboard.putData("Right Back Motor", Robot.drivetrainSubsystem.motorRB);
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	protected boolean isFinished() {
+		return false;
+	}
+
+	protected void end() {
+	}
+
+	protected void interrupted() {
+	}
 }
