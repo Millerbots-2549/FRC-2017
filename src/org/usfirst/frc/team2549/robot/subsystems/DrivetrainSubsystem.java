@@ -4,24 +4,25 @@ import org.usfirst.frc.team2549.robot.RobotMap;
 import org.usfirst.frc.team2549.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DrivetrainSubsystem extends Subsystem {
+
 	private RobotDrive drive;
 
-	public Talon motorLF;
-	public Talon motorLB;
-	public Talon motorRF;
-	public Talon motorRB;
+	public SpeedController motorLF;
+	public SpeedController motorLB;
+	public SpeedController motorRF;
+	public SpeedController motorRB;
 
 	public DrivetrainSubsystem() {
-		drive = new RobotDrive(RobotMap.motorLF, RobotMap.motorLB, RobotMap.motorRF, RobotMap.motorRB);
+		drive = new RobotDrive(RobotMap.portMotorLF, RobotMap.portMotorLB, RobotMap.portMotorRF, RobotMap.portMotorRB);
 
-		motorLF = new Talon(RobotMap.motorLF);
-		motorLB = new Talon(RobotMap.motorLB);
-		motorRF = new Talon(RobotMap.motorRF);
-		motorRB = new Talon(RobotMap.motorRB);
+		motorLF = RobotMap.motorLF.getController();
+		motorLB = RobotMap.motorLB.getController();
+		motorRF = RobotMap.motorRF.getController();
+		motorRB = RobotMap.motorRB.getController();
 	}
 
 	public void initDefaultCommand() {
@@ -36,7 +37,7 @@ public class DrivetrainSubsystem extends Subsystem {
 		drive.mecanumDrive_Cartesian(x, y, rotation, gyroAngle);
 	}
 
-	public void setMotor(Talon motor, int value) {
+	public void setMotor(SpeedController motor, int value) {
 		motor.set(value);
 	}
 }

@@ -1,15 +1,23 @@
 package org.usfirst.frc.team2549.robot;
 
-import edu.wpi.first.wpilibj.Talon;
+import org.usfirst.frc.team2549.robot.util.MotorController;
 
 public class RobotMap {
-	public static int motorLF = 0;
-	public static int motorLB = 1;
-	public static int motorRF = 2;
-	public static int motorRB = 3;
 
-	public static final Talon talonLF = new Talon(motorLF);
-	public static final Talon talonLB = new Talon(motorLB);
-	public static final Talon talonRF = new Talon(motorRF);
-	public static final Talon talonRB = new Talon(motorRB);
+	public static final int portMotorLF = 0;
+	public static final int portMotorLB = 1;
+	public static final int portMotorRF = 2;
+	public static final int portMotorRB = 3;
+	public static final MotorController motorLF = new MotorController(MotorController.Type.Talon, portMotorLF);
+	public static final MotorController motorLB = new MotorController(MotorController.Type.Talon, portMotorLB);
+	public static final MotorController motorRF = new MotorController(MotorController.Type.Talon, portMotorRF);
+	public static final MotorController motorRB = new MotorController(MotorController.Type.Talon, portMotorRB);
+
+	public static final int portMotorLift = 4;
+	public static final MotorController motorLift = new MotorController(MotorController.Type.Talon, portMotorLift);
+
+	public static final int[] portEncLF = { 0, 1 };
+	public static final int[] portEncLB = { 2, 3 };
+	public static final int[] portEncRF = { 4, 5 };
+	public static final int[] portEncRB = { 6, 7 };
 }

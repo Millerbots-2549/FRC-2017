@@ -8,7 +8,6 @@ public class OI {
 	public int axisR = 2;
 
 	public int portMain = 0;
-	public int portManipulator = 1;
 
 	public Joystick ctrlMain = new Joystick(portMain);
 }
