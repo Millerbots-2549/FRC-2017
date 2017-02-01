@@ -22,10 +22,10 @@ public class DriveCommand extends Command {
 		SmartDashboard.putNumber("Joystick Y Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY));
 		SmartDashboard.putNumber("Joystick Rotation Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
 
-		SmartDashboard.putNumber("Left Front Motor", Robot.drivetrainSubsystem.motorLF.get());
-		SmartDashboard.putNumber("Left Back Motor", Robot.drivetrainSubsystem.motorLB.get());
-		SmartDashboard.putNumber("Front Front Motor", Robot.drivetrainSubsystem.motorRF.get());
-		SmartDashboard.putNumber("Right Back Motor", Robot.drivetrainSubsystem.motorRB.get());
+		SmartDashboard.putNumber("Left Front Motor", Robot.drivetrainSubsystem.motors[0].get());
+		SmartDashboard.putNumber("Left Back Motor", Robot.drivetrainSubsystem.motors[1].get());
+		SmartDashboard.putNumber("Front Front Motor", Robot.drivetrainSubsystem.motors[2].get());
+		SmartDashboard.putNumber("Right Back Motor", Robot.drivetrainSubsystem.motors[3].get());
 	}
 
 	protected boolean isFinished() {

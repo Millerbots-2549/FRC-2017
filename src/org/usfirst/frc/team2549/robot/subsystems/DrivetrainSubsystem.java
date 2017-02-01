@@ -11,18 +11,14 @@ public class DrivetrainSubsystem extends Subsystem {
 
 	private RobotDrive drive;
 
-	public SpeedController motorLF;
-	public SpeedController motorLB;
-	public SpeedController motorRF;
-	public SpeedController motorRB;
-
+	public SpeedController[] motors;
+	
 	public DrivetrainSubsystem() {
-		drive = new RobotDrive(RobotMap.portMotorLF, RobotMap.portMotorLB, RobotMap.portMotorRF, RobotMap.portMotorRB);
-
-		motorLF = RobotMap.motorLF.getController();
-		motorLB = RobotMap.motorLB.getController();
-		motorRF = RobotMap.motorRF.getController();
-		motorRB = RobotMap.motorRB.getController();
+		for(int i = 0; i < 4; i++) {
+			motors[i] = RobotMap.driveMotors[i];
+		}
+		
+		drive = new RobotDrive(motors[0], motors[1], motors[2], motors[3]);
 	}
 
 	public void initDefaultCommand() {
