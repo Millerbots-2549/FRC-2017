@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.Encoder;
 public class DrivetrainSubsystem extends Subsystem {
 
 	private RobotDrive drive;
-	
-	private double distance;
 
 	public DrivetrainSubsystem() {
 		drive = new RobotDrive(RobotMap.driveMotors[0], RobotMap.driveMotors[2], RobotMap.driveMotors[1], RobotMap.driveMotors[3]);
@@ -29,17 +27,13 @@ public class DrivetrainSubsystem extends Subsystem {
 	public void driveMecanum(double x, double y, double rotation, double gyroAngle) {
 		drive.mecanumDrive_Cartesian(x, y, rotation, gyroAngle);
 	}
-	
+
 	public void resetDistance() {
 		for(int i = 0; i < 4; i++) {
 			RobotMap.encoders[i].reset();
 		}
 	}
-	
-	public double getDistanceDriven() {
-		return 1;
-	}
-	
+
 	public double getEncoder(Encoder encoder) {
 		return encoder.getDistance();
 	}
