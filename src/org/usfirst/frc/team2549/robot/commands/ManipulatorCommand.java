@@ -12,16 +12,16 @@ public class ManipulatorCommand extends Command {
     }
 
     protected void initialize() {
-    	Robot.manipulatorSubsystem.setClosed();
+    	Robot.manipulatorSubsystem.close();
     }
 
     protected void execute() {
     	if(Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonGearOpen) == true) {
-    		Robot.manipulatorSubsystem.setOpen();
+    		Robot.manipulatorSubsystem.open();
     		SmartDashboard.putBoolean("Manipulator Open?", Robot.manipulatorSubsystem.getOpen());
     	}
     	else if(Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonGearOpen) == true) {
-    		Robot.manipulatorSubsystem.setClosed();
+    		Robot.manipulatorSubsystem.open();
     		SmartDashboard.putBoolean("Manipulator Open?", Robot.manipulatorSubsystem.getOpen());
     	}
     }

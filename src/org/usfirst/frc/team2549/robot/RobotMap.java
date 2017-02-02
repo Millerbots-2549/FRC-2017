@@ -36,7 +36,7 @@ public class RobotMap {
 	};
 
 	// DRIVETRAIN SUBSYSTEM
-	public static final SpeedController[] driveMotors = {
+	public static final TalonSRX[] driveMotors = {
 			new TalonSRX(motorPorts[0]), 	// front left motor
 			new TalonSRX(motorPorts[1]), 	// front right motor
 			new TalonSRX(motorPorts[2]), 	// rear left motor
@@ -47,6 +47,6 @@ public class RobotMap {
 	public static final DoubleSolenoid gearSolenoid = new DoubleSolenoid(solenoidPorts[0], solenoidPorts[1]);
 
 	// LIFT SUBSYSTEM
-	public static final SpeedController liftMotor = new Spark(motorPorts[4]);
+	public static final Spark liftMotor = new Spark(motorPorts[4]);
 	public static final Solenoid clampSolenoid = new Solenoid(solenoidPorts[2]);
 }

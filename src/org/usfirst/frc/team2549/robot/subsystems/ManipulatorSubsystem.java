@@ -14,14 +14,14 @@ public class ManipulatorSubsystem extends Subsystem {
         setDefaultCommand(new ManipulatorCommand());
     }
 
-    public void setOpen() {
+    public void open() {
     	if(open = false) {
     		RobotMap.gearSolenoid.set(DoubleSolenoid.Value.kForward);
     		open = true;
     	}
     }
 
-    public void setClosed() {
+    public void close() {
     	if(open = true) {
     		RobotMap.gearSolenoid.set(DoubleSolenoid.Value.kReverse);
     		open = false;
