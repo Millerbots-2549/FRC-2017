@@ -1,31 +1,40 @@
 package org.usfirst.frc.team2549.robot.subsystems;
 
-import org.usfirst.frc.team2549.robot.RobotMap;
 import org.usfirst.frc.team2549.robot.commands.WinchCommand;
+import org.usfirst.frc.team2549.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Solenoid;
 
 public class WinchSubsystem extends Subsystem {
 
-	public boolean forward = true;
-	
-    public void initDefaultCommand() {
-        setDefaultCommand(new WinchCommand());
-    }
-    
-    public void setMotor(double value) {
-    	if(forward = true)
-    		RobotMap.liftMotor.set(value);
-    	else if(forward = false)
-    		RobotMap.liftMotor.set(-value);
-    }
-    
-    public void openClamp() {
-    	RobotMap.clampSolenoid.set(true);
-    }
-    
-    public void closeClamp() {
-    	RobotMap.clampSolenoid.set(false);
-    }
-}
+	private Spark motor;
+	private Solenoid solenoid;
 
+	public boolean isForward = true;
+
+	public WinchSubsystem() {
+		motor = new Spark(RobotMap.motorPorts[4]);
+		solenoid = new Solenoid(RobotMap.solenoidPorts[2]);
+	}
+
+	public void initDefaultCommand() {
+		setDefaultCommand(new WinchCommand());
+	}
+
+	public void setMotor(double value) {
+		if (isForward == true)
+			motor.set(value);
+		else if (isForward == false)
+			motor.set(-value);
+	}
+
+	public void openClamp() {
+		solenoid.set(true);
+	}
+
+	public void closeClamp() {
+		solenoid.set(false);
+	}
+}

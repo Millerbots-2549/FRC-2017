@@ -15,9 +15,9 @@ public class WinchCommand extends Command {
     protected void execute() {
     	Robot.winchSubsystem.setMotor(1 - Robot.oi.axisW);
     	
-    	if(Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampOpen) == true)
+    	if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampOpen))
     		Robot.winchSubsystem.openClamp();
-    	else if(Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampClose) == true)
+    	else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampClose))
     		Robot.winchSubsystem.closeClamp();
     }
 

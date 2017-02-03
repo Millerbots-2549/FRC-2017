@@ -8,28 +8,33 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class ManipulatorSubsystem extends Subsystem {
 
-	private boolean open = false;
-	
-    public void initDefaultCommand() {
-        setDefaultCommand(new ManipulatorCommand());
-    }
+	private DoubleSolenoid solenoid;
+	private boolean isOpen;
 
-    public void open() {
-    	if(open = false) {
-    		RobotMap.gearSolenoid.set(DoubleSolenoid.Value.kForward);
-    		open = true;
-    	}
-    }
+	public ManipulatorSubsystem() {
+		solenoid = new DoubleSolenoid(RobotMap.solenoidPorts[0], RobotMap.solenoidPorts[1]);
+		isOpen = false;
+	}
 
-    public void close() {
-    	if(open = true) {
-    		RobotMap.gearSolenoid.set(DoubleSolenoid.Value.kReverse);
-    		open = false;
-    	}
-    }
-    
-    public boolean getOpen() {
-    	return open;
-    }
+	public void initDefaultCommand() {
+		setDefaultCommand(new ManipulatorCommand());
+	}
+
+	public void open() {
+		if (isOpen == false) {
+			solenoid.set(DoubleSolenoid.Value.kForward);
+			isOpen = true;
+		}
+	}
+
+	public void close() {
+		if (isOpen == true) {
+			solenoid.set(DoubleSolenoid.Value.kReverse);
+			isOpen = false;
+		}
+	}
+
+	public boolean isOpen() {
+		return isOpen;
+	}
 }
-
