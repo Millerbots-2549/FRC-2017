@@ -4,20 +4,10 @@ import org.usfirst.frc.team2549.robot.commands.WinchCommand;
 import org.usfirst.frc.team2549.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Solenoid;
 
 public class WinchSubsystem extends Subsystem {
 
-	private Spark motor;
-	private Solenoid solenoid;
-
 	public boolean isForward = true;
-
-	public WinchSubsystem() {
-		motor = new Spark(RobotMap.motorPorts[4]);
-		solenoid = new Solenoid(RobotMap.solenoidPorts[2]);
-	}
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new WinchCommand());
@@ -25,16 +15,17 @@ public class WinchSubsystem extends Subsystem {
 
 	public void setMotor(double value) {
 		if (isForward == true)
-			motor.set(value);
+			RobotMap.winchMotor.set(value);
 		else if (isForward == false)
-			motor.set(-value);
+			RobotMap.winchMotor.set(-value);
 	}
 
 	public void openClamp() {
-		solenoid.set(true);
+		RobotMap.winchSolenoid.set(true);
 	}
 
 	public void closeClamp() {
-		solenoid.set(false);
+		RobotMap.winchSolenoid.set(false);
 	}
 }
+

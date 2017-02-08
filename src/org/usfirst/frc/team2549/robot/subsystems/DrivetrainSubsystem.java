@@ -5,23 +5,15 @@ import org.usfirst.frc.team2549.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.TalonSRX;
-import edu.wpi.first.wpilibj.Encoder;
 
 public class DrivetrainSubsystem extends Subsystem {
 
 	private RobotDrive drive;
-	private TalonSRX[] motors;
-	private Encoder[] encoders;
 
 	public DrivetrainSubsystem() {
-		for (int i = 0; i < 4; i++) {
-			motors[i] = new TalonSRX(RobotMap.motorPorts[i]);
-			encoders[i] = new Encoder(RobotMap.encoderPorts[i][0], RobotMap.encoderPorts[i][1]);
-		}
-
-		drive = new RobotDrive(motors[0], motors[2], motors[1], motors[3]);
-		motors[1].setInverted(true);
+		drive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.rearLeftMotor, RobotMap.frontRightMotor, RobotMap.rearRightMotor);
+		RobotMap.frontRightMotor.setInverted(true);
+		RobotMap.rearRightMotor.setInverted(true);
 	}
 
 	public void initDefaultCommand() {
@@ -37,16 +29,16 @@ public class DrivetrainSubsystem extends Subsystem {
 	}
 
 	public void resetDistance() {
-		for (int i = 0; i < 4; i++) {
-			encoders[i].reset();
-		}
+		RobotMap.frontLeftEncoder.reset();
+		RobotMap.frontRightEncoder.reset();
+		RobotMap.rearLeftEncoder.reset();
+		RobotMap.rearRightEncoder.reset();
 	}
-
-	public double getMotor(int port) {
-		return motors[port].get();
-	}
-
-	public double getEncoder(int port) {
-		return encoders[port].getDistance();
+	
+	public int getAverageDistance() {
+		return (RobotMap.frontLeftEncoder.get() +
+				RobotMap.frontRightEncoder.get() +
+				RobotMap.rearLeftEncoder.get() + 
+				RobotMap.rearRightEncoder.get()) / 4;
 	}
 }

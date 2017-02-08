@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2549.robot.commands;
 
 import org.usfirst.frc.team2549.robot.Robot;
+import org.usfirst.frc.team2549.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,10 +24,20 @@ public class DriveCommand extends Command {
 		SmartDashboard.putNumber("Joystick Y Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY));
 		SmartDashboard.putNumber("Joystick Rotation Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
 
-		for (int i = 0; i < 4; i++) {
-			SmartDashboard.putNumber("Motor " + i, Robot.drivetrainSubsystem.getMotor(i));
-			SmartDashboard.putNumber("Encoder " + i, Robot.drivetrainSubsystem.getEncoder(i));
-		}
+		SmartDashboard.putNumber("Front Left Motor", RobotMap.frontLeftMotor.get());
+		SmartDashboard.putNumber("Rear Left Motor", RobotMap.rearLeftMotor.get());
+		SmartDashboard.putNumber("Front Right Motor", RobotMap.frontRightMotor.get());
+		SmartDashboard.putNumber("Rear Right Motor", RobotMap.rearRightMotor.get());
+		
+		SmartDashboard.putNumber("Front Left Encoder" , RobotMap.frontLeftEncoder.get());
+		SmartDashboard.putNumber("Rear Left Encoder" , RobotMap.rearLeftEncoder.get());
+		SmartDashboard.putNumber("Front Right Encoder" , RobotMap.frontRightEncoder.get());
+		SmartDashboard.putNumber("Rear Right Encoder" , RobotMap.rearRightEncoder.get());
+		
+		SmartDashboard.putNumber("Front Left Ultrasonic" , RobotMap.frontLeftUS.getValue());
+		SmartDashboard.putNumber("Rear Left Ultrasonic" , RobotMap.rearLeftUS.getValue());
+		SmartDashboard.putNumber("Front Right Ultrasonic" , RobotMap.frontRightUS.getValue());
+		SmartDashboard.putNumber("Rear Right Ultrasonic" , RobotMap.rearRightUS.getValue());
 	}
 
 	protected boolean isFinished() {
