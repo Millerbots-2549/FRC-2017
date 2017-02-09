@@ -11,9 +11,10 @@ public class DrivetrainSubsystem extends Subsystem {
 	private RobotDrive drive;
 
 	public DrivetrainSubsystem() {
-		drive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.rearLeftMotor, RobotMap.frontRightMotor, RobotMap.rearRightMotor);
-		RobotMap.frontRightMotor.setInverted(true);
-		RobotMap.rearRightMotor.setInverted(true);
+		drive = new RobotDrive(RobotMap.driveMotors[0], RobotMap.driveMotors[2], RobotMap.driveMotors[1],
+				RobotMap.driveMotors[3]);
+		RobotMap.driveMotors[1].setInverted(true);
+		RobotMap.driveMotors[3].setInverted(true);
 	}
 
 	public void initDefaultCommand() {
@@ -29,16 +30,23 @@ public class DrivetrainSubsystem extends Subsystem {
 	}
 
 	public void resetDistance() {
-		RobotMap.frontLeftEncoder.reset();
-		RobotMap.frontRightEncoder.reset();
-		RobotMap.rearLeftEncoder.reset();
-		RobotMap.rearRightEncoder.reset();
+		for (int i = 0; i < 4; i++) {
+			RobotMap.encoders[i].reset();
+		}
+	}
+
+	public double getMotor(int port) {
+		return RobotMap.driveMotors[port].get();
+	}
+
+	public double getEncoder(int port) {
+		return RobotMap.encoders[port].getDistance();
 	}
 	
-	public int getAverageDistance() {
-		return (RobotMap.frontLeftEncoder.get() +
-				RobotMap.frontRightEncoder.get() +
-				RobotMap.rearLeftEncoder.get() + 
-				RobotMap.rearRightEncoder.get()) / 4;
+	public int getEncoderAverage() {
+		return (RobotMap.encoders[0].get() +
+				RobotMap.encoders[1].get() +
+				RobotMap.encoders[2].get() +
+				RobotMap.encoders[3].get()) / 4;
 	}
 }

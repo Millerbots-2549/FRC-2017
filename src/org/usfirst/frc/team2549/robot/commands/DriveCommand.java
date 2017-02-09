@@ -17,27 +17,27 @@ public class DriveCommand extends Command {
 	}
 
 	protected void execute() {
-		Robot.drivetrainSubsystem.driveMecanum(Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisX)/3,
-				Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY)/3, Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR)/3);
+		Robot.drivetrainSubsystem.driveMecanum(Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisX),
+				Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY), Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
 
 		SmartDashboard.putNumber("Joystick X Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisX));
 		SmartDashboard.putNumber("Joystick Y Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY));
 		SmartDashboard.putNumber("Joystick Rotation Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
 
-		SmartDashboard.putNumber("Front Left Motor", RobotMap.frontLeftMotor.get());
-		SmartDashboard.putNumber("Rear Left Motor", RobotMap.rearLeftMotor.get());
-		SmartDashboard.putNumber("Front Right Motor", RobotMap.frontRightMotor.get());
-		SmartDashboard.putNumber("Rear Right Motor", RobotMap.rearRightMotor.get());
+		SmartDashboard.putNumber("Motor Front Left", RobotMap.driveMotors[0].get());
+		SmartDashboard.putNumber("Motor Front Right", RobotMap.driveMotors[1].get());
+		SmartDashboard.putNumber("Motor Rear Left", RobotMap.driveMotors[2].get());
+		SmartDashboard.putNumber("Motor Rear Right", RobotMap.driveMotors[3].get());
 		
-		SmartDashboard.putNumber("Front Left Encoder" , RobotMap.frontLeftEncoder.get());
-		SmartDashboard.putNumber("Rear Left Encoder" , RobotMap.rearLeftEncoder.get());
-		SmartDashboard.putNumber("Front Right Encoder" , RobotMap.frontRightEncoder.get());
-		SmartDashboard.putNumber("Rear Right Encoder" , RobotMap.rearRightEncoder.get());
+		SmartDashboard.putNumber("Encoder Front Left", RobotMap.encoders[0].get());
+		SmartDashboard.putNumber("Encoder Front Right", RobotMap.encoders[1].get());
+		SmartDashboard.putNumber("Encoder Rear Left", RobotMap.encoders[2].get());
+		SmartDashboard.putNumber("Encoder Rear Right", RobotMap.encoders[3].get());
 		
-		SmartDashboard.putNumber("Front Left Ultrasonic" , RobotMap.frontLeftUS.getValue());
-		SmartDashboard.putNumber("Rear Left Ultrasonic" , RobotMap.rearLeftUS.getValue());
-		SmartDashboard.putNumber("Front Right Ultrasonic" , RobotMap.frontRightUS.getValue());
-		SmartDashboard.putNumber("Rear Right Ultrasonic" , RobotMap.rearRightUS.getValue());
+		SmartDashboard.putNumber("Ultrasonic Front Left", RobotMap.ultrasonicSensors[0].getValue());
+		SmartDashboard.putNumber("Ultrasonic Front Right", RobotMap.ultrasonicSensors[1].getValue());
+		SmartDashboard.putNumber("Ultrasonic Rear Left", RobotMap.ultrasonicSensors[2].getValue());
+		SmartDashboard.putNumber("Ultrasonic Rear Right", RobotMap.ultrasonicSensors[3].getValue());
 	}
 
 	protected boolean isFinished() {

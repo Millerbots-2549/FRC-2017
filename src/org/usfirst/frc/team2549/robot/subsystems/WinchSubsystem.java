@@ -15,17 +15,21 @@ public class WinchSubsystem extends Subsystem {
 
 	public void setMotor(double value) {
 		if (isForward == true)
-			RobotMap.winchMotor.set(value);
+			RobotMap.liftMotor.set(value);
 		else if (isForward == false)
-			RobotMap.winchMotor.set(-value);
+			RobotMap.liftMotor.set(-value);
 	}
 
 	public void openClamp() {
-		RobotMap.winchSolenoid.set(true);
+		RobotMap.clampSolenoid.set(true);
 	}
 
 	public void closeClamp() {
-		RobotMap.winchSolenoid.set(false);
+		RobotMap.clampSolenoid.set(false);
+	}
+	
+	public boolean isForward() {
+		return isForward;
 	}
 }
 

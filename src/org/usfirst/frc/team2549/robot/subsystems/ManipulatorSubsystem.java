@@ -4,7 +4,6 @@ import org.usfirst.frc.team2549.robot.RobotMap;
 import org.usfirst.frc.team2549.robot.commands.ManipulatorCommand;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class ManipulatorSubsystem extends Subsystem {
 
