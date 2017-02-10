@@ -28,25 +28,12 @@ public class DrivetrainSubsystem extends Subsystem {
 	public void driveMecanum(double x, double y, double rotation, double gyroAngle) {
 		drive.mecanumDrive_Cartesian(x, y, rotation, gyroAngle);
 	}
-
-	public void resetDistance() {
-		for (int i = 0; i < 4; i++) {
-			RobotMap.encoders[i].reset();
-		}
-	}
-
-	public double getMotor(int port) {
-		return RobotMap.driveMotors[port].get();
-	}
-
-	public double getEncoder(int port) {
-		return RobotMap.encoders[port].getDistance();
+	
+	public void drivePolar(double magnitude, double direction, double rotation) {
+		drive.mecanumDrive_Polar(magnitude, direction, rotation);
 	}
 	
-	public int getEncoderAverage() {
-		return (RobotMap.encoders[0].get() +
-				RobotMap.encoders[1].get() +
-				RobotMap.encoders[2].get() +
-				RobotMap.encoders[3].get()) / 4;
+	public double getMotor(int port) {
+		return RobotMap.driveMotors[port].get();
 	}
 }

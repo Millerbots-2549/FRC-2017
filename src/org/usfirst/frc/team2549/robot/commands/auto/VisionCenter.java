@@ -4,12 +4,12 @@ import org.usfirst.frc.team2549.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class VisionAdjust extends Command {
+public class VisionCenter extends Command {
 
 	private int cogX, cogY;
 	private boolean isFinished;
 	
-	public VisionAdjust() {
+	public VisionCenter() {
 		requires(Robot.cameras);
 		requires(Robot.drivetrain);
 	}

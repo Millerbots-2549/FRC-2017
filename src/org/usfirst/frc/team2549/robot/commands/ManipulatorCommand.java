@@ -8,21 +8,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ManipulatorCommand extends Command {
 
     public ManipulatorCommand() {
-        requires(Robot.manipulatorSubsystem);
+        requires(Robot.manipulator);
     }
 
     protected void initialize() {
-    	Robot.manipulatorSubsystem.close();
+    	Robot.manipulator.close();
     }
 
     protected void execute() {
     	if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonGearOpen)) {
-    		Robot.manipulatorSubsystem.open();
-    		SmartDashboard.putBoolean("Manipulator Open?", Robot.manipulatorSubsystem.isOpen());
+    		Robot.manipulator.open();
+    		SmartDashboard.putBoolean("Manipulator Open?", Robot.manipulator.isOpen());
     	}
     	else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonGearClose)) {
-    		Robot.manipulatorSubsystem.close();
-    		SmartDashboard.putBoolean("Manipulator Open?", Robot.manipulatorSubsystem.isOpen());
+    		Robot.manipulator.close();
+    		SmartDashboard.putBoolean("Manipulator Open?", Robot.manipulator.isOpen());
     	}
     }
 

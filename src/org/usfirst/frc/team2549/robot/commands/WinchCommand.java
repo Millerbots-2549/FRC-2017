@@ -9,22 +9,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class WinchCommand extends Command {
 
 	public WinchCommand() {
-		requires(Robot.winchSubsystem);
+		requires(Robot.winch);
 	}
 
 	protected void initialize() {
 	}
 
 	protected void execute() {
-		Robot.winchSubsystem.setMotor(Robot.oi.axisW);
+		Robot.winch.setMotor(Robot.oi.axisW);
 		SmartDashboard.putNumber("Winch Motor", RobotMap.liftMotor.get());
 
 		if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampOpen) == true) {
-			Robot.winchSubsystem.openClamp();
-			SmartDashboard.putBoolean("Winch Forward?", Robot.winchSubsystem.isForward());
+			Robot.winch.openClamp();
+			SmartDashboard.putBoolean("Winch Forward?", Robot.winch.isForward());
 		} else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampClose) == true) {
-			Robot.winchSubsystem.closeClamp();
-			SmartDashboard.putBoolean("Winch Forward?", Robot.winchSubsystem.isForward());
+			Robot.winch.closeClamp();
+			SmartDashboard.putBoolean("Winch Forward?", Robot.winch.isForward());
 		}
 	}
 
