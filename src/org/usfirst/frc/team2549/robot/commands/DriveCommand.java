@@ -33,10 +33,8 @@ public class DriveCommand extends Command {
 		SmartDashboard.putNumber("Encoder Rear Left", Robot.sensors.getEncoder(2));
 		SmartDashboard.putNumber("Encoder Rear Right", Robot.sensors.getEncoder(3));
 		
-		SmartDashboard.putNumber("Ultrasonic Front Left", Robot.sensors.getUltrasonic(0));
-		SmartDashboard.putNumber("Ultrasonic Front Right", Robot.sensors.getUltrasonic(1));
-		SmartDashboard.putNumber("Ultrasonic Rear Left", Robot.sensors.getUltrasonic(2));
-		SmartDashboard.putNumber("Ultrasonic Rear Right", Robot.sensors.getUltrasonic(3));
+		SmartDashboard.putNumber("Ultrasonic Left", Robot.sensors.getUltrasonic(0));
+		SmartDashboard.putNumber("Ultrasonic Right", Robot.sensors.getUltrasonic(1));
 	}
 
 	protected boolean isFinished() {
