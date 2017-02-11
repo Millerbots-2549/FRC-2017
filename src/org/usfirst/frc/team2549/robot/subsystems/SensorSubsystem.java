@@ -18,20 +18,32 @@ public class SensorSubsystem extends Subsystem {
 	public double getEncoder(int port) {
 		return RobotMap.encoders[port].get();
 	}
-	
+
 	public double getEncoderAverage() {
-		return (getEncoder(0) +
-				getEncoder(1) +
-				getEncoder(2) +
-				getEncoder(3)) / 4;
+		return (getEncoder(0) + getEncoder(1) + getEncoder(2) + getEncoder(3)) / 4;
 	}
 
 	public double getUltrasonic(int port) {
-		return RobotMap.ultrasonicSensors[port].getValue();
+		return RobotMap.ultrasonicSensors[port].getVoltage();
 	}
 
 	public double getUltrasonicAverage() {
-		return (getUltrasonic(0) +
-				getUltrasonic(1)) / 4;
+		return (getUltrasonic(0) + getUltrasonic(1)) / 4;
+	}
+
+	public void resetGyro() {
+		RobotMap.gyro.reset();
+	}
+
+	public double getGyroAngle() {
+		return RobotMap.gyro.getAngle();
+	}
+
+	public double getGyroRate() {
+		return RobotMap.gyro.getRate();
+	}
+
+	public double getAccelerometer() {
+		return RobotMap.accelerometer.getX();
 	}
 }
