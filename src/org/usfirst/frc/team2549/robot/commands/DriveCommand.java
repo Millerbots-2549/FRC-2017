@@ -23,18 +23,18 @@ public class DriveCommand extends Command {
 		SmartDashboard.putNumber("Joystick Y Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisY));
 		SmartDashboard.putNumber("Joystick Rotation Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisR));
 
-		SmartDashboard.putNumber("Motor Front Left", Robot.drivetrain.getMotor(0));
-		SmartDashboard.putNumber("Motor Front Right", Robot.drivetrain.getMotor(1));
-		SmartDashboard.putNumber("Motor Rear Left", Robot.drivetrain.getMotor(2));
-		SmartDashboard.putNumber("Motor Rear Right", Robot.drivetrain.getMotor(3));
+		SmartDashboard.putNumber("Front Left Motor", Robot.drivetrain.getMotor(0));
+		SmartDashboard.putNumber("Front Right Motor", Robot.drivetrain.getMotor(1));
+		SmartDashboard.putNumber("Rear Left Motor", Robot.drivetrain.getMotor(2));
+		SmartDashboard.putNumber("Rear Right Motor", Robot.drivetrain.getMotor(3));
 		
-		SmartDashboard.putNumber("Encoder Front Left", Robot.sensors.getEncoder(0));
-		SmartDashboard.putNumber("Encoder Front Right", Robot.sensors.getEncoder(1));
-		SmartDashboard.putNumber("Encoder Rear Left", Robot.sensors.getEncoder(2));
-		SmartDashboard.putNumber("Encoder Rear Right", Robot.sensors.getEncoder(3));
+		SmartDashboard.putNumber("Front Left Encoder", Robot.sensors.getEncoder(0));
+		SmartDashboard.putNumber("Front Right Encoder", Robot.sensors.getEncoder(1));
+		SmartDashboard.putNumber("Rear Left Encoder", Robot.sensors.getEncoder(2));
+		SmartDashboard.putNumber("Rear Right Encoder", Robot.sensors.getEncoder(3));
 		
-		SmartDashboard.putNumber("Ultrasonic Left", Robot.sensors.getUltrasonic(0));
-		SmartDashboard.putNumber("Ultrasonic Right", Robot.sensors.getUltrasonic(1));
+		SmartDashboard.putNumber("Left Ultrasonic", Robot.sensors.getUltrasonic(0));
+		SmartDashboard.putNumber("Right Ultrasonic", Robot.sensors.getUltrasonic(1));
 	}
 
 	protected boolean isFinished() {
