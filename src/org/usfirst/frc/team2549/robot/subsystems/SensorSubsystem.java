@@ -16,6 +16,8 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	public double getEncoder(int port) {
+		if (port == 1 || port == 3)
+			return -RobotMap.encoders[port].get();
 		return RobotMap.encoders[port].get();
 	}
 

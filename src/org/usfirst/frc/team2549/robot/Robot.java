@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2549.robot;
 
 import org.usfirst.frc.team2549.robot.commands.AutoCommand;
+import org.usfirst.frc.team2549.robot.commands.AutoTestCommand;
 import org.usfirst.frc.team2549.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team2549.robot.subsystems.ManipulatorSubsystem;
 import org.usfirst.frc.team2549.robot.subsystems.WinchSubsystem;
@@ -24,11 +25,13 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autoCommand;
-	SendableChooser<Command> autoChooser = new SendableChooser<>();
+	SendableChooser autoChooser;
 
 	public void robotInit() {
 		oi = new OI();
+		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Default Auto", new AutoCommand());
+		autoChooser.addObject("Drive into wall", new AutoTestCommand());
 		SmartDashboard.putData("Auto Mode", autoChooser);
 	}
 
@@ -40,7 +43,20 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		autoCommand = (Command) autoChooser.getSelected();
+
+		String autoSelected = SmartDashboard.getString("Auto Mode", "Default Auto");
+
+		switch(autoSelected) {
+		case "Drive into Wall":
+			autoCommand = new AutoTestCommand();
+		case "Default Auto":
+			autoCommand = new AutoCommand();
+			break;
+		default:
+			autoCommand = new AutoCommand();
+			break;
+		}
+
 		if (autoCommand != null) autoCommand.start();
 	}
 

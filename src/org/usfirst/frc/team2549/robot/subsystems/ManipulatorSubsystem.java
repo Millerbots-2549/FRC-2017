@@ -18,16 +18,16 @@ public class ManipulatorSubsystem extends Subsystem {
 	}
 
 	public void open() {
-		RobotMap.gearSolenoid.set(true);
+		//RobotMap.gearSolenoid.set(true);
 		isOpen = true;
 	}
 
 	public void close() {
-		RobotMap.gearSolenoid.set(false);
+		//RobotMap.gearSolenoid.set(false);
 		isOpen = false;
 	}
 
 	public boolean isOpen() {
 		return isOpen;
-	}
+	}//*/
 }

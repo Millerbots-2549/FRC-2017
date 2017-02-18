@@ -21,7 +21,7 @@ public class DriveSound extends Command {
 
 	protected void execute() {
 		while(Robot.sensors.getUltrasonicAverage() > distance)
-			Robot.drivetrain.driveMecanum(speed, 0, 0);
+			Robot.drivetrain.driveMecanum(0, speed, 0);
 		isFinished = true;
 	}
 

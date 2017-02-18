@@ -1,13 +1,16 @@
 package org.usfirst.frc.team2549.robot.commands;
 
+import org.usfirst.frc.team2549.robot.commands.auto.DriveDistance;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class AutoCommand extends CommandGroup {
 
     public AutoCommand() {
+    	
+    	addSequential(new DriveDistance(1000, 0, .4));
+    	addSequential(new DriveDistance(1000, 180, .4));
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

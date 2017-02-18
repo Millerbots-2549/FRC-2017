@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.Solenoid;
 public class RobotMap {
 
 	// PWM
-	public static final int motorFL = 0;
-	public static final int motorFR = 1;
-	public static final int motorBL = 2;
-	public static final int motorBR = 3;
-	public static final int winchMotor = 4;
+	public static final int motorFL = 7;
+	public static final int motorFR = 6;
+	public static final int motorBL = 9;
+	public static final int motorBR = 8;
+	public static final int winchMotor = 5;
 
 	// DIO
 	public static final int[] encoderFL = { 0, 1 };
@@ -29,9 +29,9 @@ public class RobotMap {
 	public static final int sonicL = 0;
 	public static final int sonicR = 1;
 	public static final int gyroPort = 2;
-	
+
 	// PCM
-	public static final int gearSolenoidPort = 0;
+	public static final int gearSolenoidPort = 1;
 	public static final int clampSolenoidPort = 1;
 
 	// SENSORS
@@ -47,7 +47,6 @@ public class RobotMap {
 	};
 	public static final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	public static final BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
-	public static final AnalogGyro analogGyro = new AnalogGyro(gyroPort);
 
 	// DRIVETRAIN SUBSYSTEM
 	public static final SpeedController[] driveMotors = {
@@ -58,7 +57,7 @@ public class RobotMap {
 	};
 
 	// GEAR MANIPULATOR SUBSYSTEM
-	public static final Solenoid gearSolenoid = new Solenoid(gearSolenoidPort);
+	//public static final Solenoid gearSolenoid = new Solenoid(gearSolenoidPort);
 
 	// LIFT SUBSYSTEM
 	public static final Spark liftMotor = new Spark(winchMotor);
