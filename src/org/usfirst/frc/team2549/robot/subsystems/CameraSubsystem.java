@@ -14,16 +14,9 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class CameraSubsystem extends Subsystem {
-
-	public String cam = "cam1";
-
 	private int resX, resY;
 
-	public UsbCamera gearCamera;
-	public UsbCamera winchCamera;
-
 	private CvSink cvSink;
-	private CvSink cvSinc;
 	private CvSource outputStream;
 
 	private Mat source;
@@ -32,7 +25,7 @@ public class CameraSubsystem extends Subsystem {
 	private Scalar min;
 	private Scalar max;
 
-	public CameraSubsystem() {
+	public CameraSubsystem() {		
 		source = new Mat();
 		output = new Mat();
 
@@ -48,15 +41,14 @@ public class CameraSubsystem extends Subsystem {
 	}
 
 	public void start() {
-		new Thread(() -> {
-			gearCamera = CameraServer.getInstance().startAutomaticCapture();
-			gearCamera.setResolution(resX, resY);
-			winchCamera.setResolution(resX, resY);
-			
-			cvSink = CameraServer.getInstance().getVideo();
+		new Thread(() -> {			
+			CameraServer.getInstance().startAutomaticCapture(1);
+			CameraServer.getInstance().startAutomaticCapture(0);
+
 			outputStream = CameraServer.getInstance().putVideo("Filter", resX, resY);
 
 			while (!Thread.interrupted()) {
+				cvSink = CameraServer.getInstance().getVideo();
 				cvSink.grabFrame(source);
 
 				Imgproc.threshold(source, output, 100, 200, 0);
@@ -65,9 +57,5 @@ public class CameraSubsystem extends Subsystem {
 				outputStream.putFrame(output);
 			}
 		}).start();
-	}
-
-	public void setCamera(UsbCamera camera) {
-		camera = CameraServer.getInstance().startAutomaticCapture();
 	}
 }

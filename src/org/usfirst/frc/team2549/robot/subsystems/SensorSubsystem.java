@@ -26,7 +26,7 @@ public class SensorSubsystem extends Subsystem {
 	}
 
 	public double getUltrasonic(int port) {
-		return RobotMap.ultrasonicSensors[port].getVoltage();
+		return RobotMap.ultrasonicSensors[port].getValue();
 	}
 
 	public double getUltrasonicAverage() {

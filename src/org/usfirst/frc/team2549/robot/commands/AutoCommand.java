@@ -8,8 +8,7 @@ public class AutoCommand extends CommandGroup {
 
     public AutoCommand() {
     	
-    	addSequential(new DriveDistance(1000, 0, .4));
-    	addSequential(new DriveDistance(1000, 180, .4));
+    	addSequential(new DriveDistance(500, 0, .2));
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

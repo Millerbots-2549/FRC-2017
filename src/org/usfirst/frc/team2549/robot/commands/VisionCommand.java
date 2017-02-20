@@ -12,17 +12,9 @@ public class VisionCommand extends Command {
 	}
 
 	protected void initialize() {
-		Robot.cameras.start();
-		System.out.println("WEYYAYAAYAAAAAAAAAA");
 	}
 
 	protected void execute() {
-    	if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonCameraGear))
-    		Robot.cameras.setCamera(Robot.cameras.gearCamera);
-    	else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonCameraWinch))
-    		Robot.cameras.setCamera(Robot.cameras.winchCamera);
-    	
-    	SmartDashboard.putString("Camera", Robot.cameras.cam);
     }
 
 	protected boolean isFinished() {

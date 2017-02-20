@@ -22,6 +22,7 @@ public class DriveSound extends Command {
 	protected void execute() {
 		while(Robot.sensors.getUltrasonicAverage() > distance)
 			Robot.drivetrain.driveMecanum(0, speed, 0);
+		
 		isFinished = true;
 	}
 
@@ -33,5 +34,6 @@ public class DriveSound extends Command {
 	}
 
 	protected void interrupted() {
+		isFinished = true;
 	}
 }

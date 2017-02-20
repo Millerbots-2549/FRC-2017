@@ -54,5 +54,6 @@ public class DriveDistance extends Command {
 	}
 
 	protected void interrupted() {
+		isFinished = true;
 	}
 }

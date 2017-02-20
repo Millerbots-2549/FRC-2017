@@ -8,15 +8,11 @@ public class OI {
 	public int axisR = 2;
 	public int axisW = 3;
 	
-	public int buttonCameraGear = 6;
-	public int buttonCameraWinch = 4;
-	
 	public int buttonClampOpen = 5;
 	public int buttonClampClose = 3;
 
-	public int buttonWinchStop = 10;
-	public int buttonWinchForward = 8;
-	public int buttonWinchReverse = 12;
+	public int buttonWinchForward = 6;
+	public int buttonWinchReverse = 4;
 
 	public int portMain = 0;
 

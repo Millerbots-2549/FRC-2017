@@ -26,13 +26,18 @@ public class Robot extends IterativeRobot {
 
 	Command autoCommand;
 	SendableChooser autoChooser;
+	
+	public boolean autoFinished;
 
 	public void robotInit() {
 		oi = new OI();
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Default Auto", new AutoCommand());
 		autoChooser.addObject("Drive into wall", new AutoTestCommand());
+		autoChooser.addObject("Stop Auto", new Object());
 		SmartDashboard.putData("Auto Mode", autoChooser);
+		
+		cameras.start();
 	}
 
 	public void disabledInit() {
@@ -43,12 +48,17 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
+		autoFinished = false;
 
 		String autoSelected = SmartDashboard.getString("Auto Mode", "Default Auto");
 
 		switch(autoSelected) {
+		case "Stop Auto":
+			autoFinished = true;
+			break;
 		case "Drive into Wall":
 			autoCommand = new AutoTestCommand();
+			break;
 		case "Default Auto":
 			autoCommand = new AutoCommand();
 			break;
@@ -61,6 +71,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousPeriodic() {
+		if (autoFinished) autoCommand.cancel();
 		Scheduler.getInstance().run();
 	}
 

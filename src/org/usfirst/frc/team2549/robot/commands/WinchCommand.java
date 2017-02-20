@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class WinchCommand extends Command {
 	
-	private double speed;
+	private double input;
 
 	public WinchCommand() {
 		requires(Robot.winch);
@@ -18,14 +18,15 @@ public class WinchCommand extends Command {
 	}
 
 	protected void execute() {
-		speed = Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisW);
+		input = Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisW);
 		
 		if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonWinchForward))
 			Robot.winch.isForward = true;
 		else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonWinchReverse))
 			Robot.winch.isForward = false;
 		
-		Robot.winch.setMotor(speed);
+		Robot.winch.setMotor(1 - (input + 1) / 2);
+		
 		SmartDashboard.putNumber("Winch Motor", RobotMap.liftMotor.get());
 		SmartDashboard.putNumber("Joystick W Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisW));
 		
