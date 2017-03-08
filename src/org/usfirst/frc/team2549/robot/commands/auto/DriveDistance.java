@@ -33,10 +33,10 @@ public class DriveDistance extends Command {
 				Robot.drivetrain.driveMecanum(0, 0, speed);
 
 		Robot.sensors.resetEncoders();
-		
+
 		while (Robot.sensors.getEncoderAverage() < distance) {
 			Robot.drivetrain.driveMecanum(0, -speed, 0);
-			
+
 			SmartDashboard.putNumber("Front Left Encoder", Robot.sensors.getEncoder(0));
 			SmartDashboard.putNumber("Front Right Encoder", Robot.sensors.getEncoder(1));
 			SmartDashboard.putNumber("Rear Left Encoder", Robot.sensors.getEncoder(2));

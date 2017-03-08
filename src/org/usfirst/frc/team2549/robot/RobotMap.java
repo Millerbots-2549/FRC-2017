@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
@@ -15,9 +15,11 @@ public class RobotMap {
 	// PWM
 	public static final int motorFL = 7;
 	public static final int motorFR = 6;
-	public static final int motorBL = 9;
-	public static final int motorBR = 8;
+	public static final int motorBL = 8;
+	public static final int motorBR = 9;
 	public static final int winchMotor = 5;
+	public static final int servoL = 3;
+	public static final int servoR = 4;
 
 	// DIO
 	public static final int[] encoderFL = { 0, 1 };
@@ -56,10 +58,13 @@ public class RobotMap {
 			new TalonSRX(motorBR)	// rear right motor
 	};
 
-	// GEAR MANIPULATOR SUBSYSTEM
-	//public static final Solenoid gearSolenoid = new Solenoid(gearSolenoidPort);
-
 	// LIFT SUBSYSTEM
 	public static final Spark liftMotor = new Spark(winchMotor);
 	public static final Solenoid clampSolenoid = new Solenoid(clampSolenoidPort);
+
+	// FLAGS
+	public static final Servo[] flagServos = {
+			new Servo(servoL),
+			new Servo(servoR)
+	};
 }

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class WinchCommand extends Command {
-	
+
 	private double input;
 
 	public WinchCommand() {
@@ -19,29 +19,21 @@ public class WinchCommand extends Command {
 
 	protected void execute() {
 		input = Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisW);
-		
-		if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonWinchForward))
+
+		if (Robot.oi.buttonWinchForward.get())
 			Robot.winch.isForward = true;
-		else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonWinchReverse))
+		else if (Robot.oi.buttonWinchReverse.get())
 			Robot.winch.isForward = false;
-		
+
 		Robot.winch.setMotor(1 - (input + 1) / 2);
-		
+
 		SmartDashboard.putNumber("Winch Motor", RobotMap.liftMotor.get());
 		SmartDashboard.putNumber("Joystick W Axis", Robot.oi.ctrlMain.getRawAxis(Robot.oi.axisW));
-		
-//		if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonWinchForward))
-//			Robot.winch.setMotor(.8);
-//		else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonWinchReverse))
-//			Robot.winch.setMotor(-.5);
-//		else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonWinchStop))
-//			Robot.winch.setMotor(0);
 
-		if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampOpen))
+		if (Robot.oi.buttonClampOpen.get())
 			Robot.winch.openClamp();
-		else if (Robot.oi.ctrlMain.getRawButton(Robot.oi.buttonClampClose))
-			Robot.winch.closeClamp();
-		
+		else if (Robot.oi.buttonClampClose.get()) Robot.winch.closeClamp();
+
 		SmartDashboard.putBoolean("Winch Forward?", Robot.winch.isForward());
 	}
 
